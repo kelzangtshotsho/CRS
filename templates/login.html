@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        body, html{
+            margin: 0;
+            padding-top: 80px;
+            height: 100%;
+            background-image: url("https://img.wallpapersafari.com/desktop/1600/900/44/2/aQz3cY.jpg");
+            background-size: cover;   
+        }
+        .form-wrap{
+            width: 300px;
+            margin-top: 200px;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            color: white;
+            background: none;
+            text-align: center;
+            
+        }
+        h1{
+            margin-left: 610px;
+            background: none;
+            border:2px;
+            border-radius: 3px;
+            padding:6px 20px;
+            box-sizing: border-box;
+            margin-bottom: 5px
+        }
+        .box{
+            border: none;
+            outline: none;
+            background: none;
+            color: red;
+            font-size:18px;
+            width: 100%;
+            float: left;
+            margin-top: 20px; 
+           
+        }
+        input{
+            color: white;
+            text-align: center;
+            background: none;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding:6px 20px;
+            box-sizing: border-box;	
+            margin-top: 30px;
+            margin-left: 560px;
+            margin-right: 40px;
+        }
+        .message{
+            margin-left: 566px;
+        }
+        #g{
+            cursor: pointer;
+            color: grey;
+            margin-top: 10px;
+        }
+        input:hover{
+            color: grey; 
+            box-shadow: 5px 5px 50px;
+            background-color: #0009;
+        }
+        #g:hover{
+            transform:scale(1.1);
+            transition-duration: 0.2s;
+        }
+        #user{
+            margin-top: 10px;
+        }
+        #pass{
+            margin-top: 10px;
+        }
+        @media only screen and (max-width: 1023px){
+            .box{
+                margin-left: -430px;
+            }
+            h1{
+                margin-left: 170px;
+            }
+            .message{
+                margin-top: 170px;
+                margin-left: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-warp">
+        <h1 style="color: white;">Log In</h1>
+        <div class="box">
+    <form action="login" method="post" autocomplete="off">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>
+                    <input type="text" name="username" placeholder="UserName" id="user">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="password" name="password" placeholder="Password" id="pass">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Log In" id="g" title="Click to login"><br><br>
+                </td>
+            </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+    <div class="message">
+        {% for message in messages %}
+        <h3 style="color: red;"> {{message}} </h3>
+        {% endfor %}
+    </div>
+</body>
+</html>
